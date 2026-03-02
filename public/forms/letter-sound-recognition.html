@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Letter Sound Recognition — Preview</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-loader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/redux@4.2.1/dist/redux.min.js"></script>
+  <script>window.Redux = Redux;</script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/tangy-form@4.50.6/dist/bundle.js"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 860px; margin: 2rem auto; padding: 0 1rem; }
+    h2 { color: #ea580c; margin-bottom: 0.25rem; }
+    p.hint { color: #6b7280; font-size: 0.875rem; margin-bottom: 1.5rem; }
+    #log { margin-top: 2rem; background: #1e1e1e; color: #d4d4d4; padding: 1rem;
+           border-radius: 8px; font-family: monospace; font-size: 0.8rem;
+           white-space: pre-wrap; max-height: 300px; overflow-y: auto; }
+    /* tangy-timed color overrides */
+    :root {
+      --accent-color:       #d1d5db;
+      --primary-color:      #ef4444;
+      --accent-text-color:  #1f2937;
+      --tangy-toggle-button-font-size: 1.6rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Letter Sound Recognition</h2>
+  <p class="hint">Form preview — open DevTools console or check the log below to see collected data on submit.</p>
+
+  <tangy-form id="letter-sound-form">
+
+    <tangy-form-item id="instructions" label="Instructions">
+      <tangy-box>
+        <p><strong>Say to the student:</strong></p>
+        <p style="font-style:italic; margin:8px 0 16px;">
+          "Here are some letters. Tell me the <u>sound</u> each letter makes,
+          going left to right across every row. Do as many as you can.
+          Ready? Begin."
+        </p>
+        <p><strong>Assessor workflow:</strong></p>
+        <ol style="margin:8px 0 0 20px; line-height:2;">
+          <li>Press <strong>Play</strong> to start the 60-second timer.</li>
+          <li>All letters start as <strong>correct</strong> (gray).
+              Tap a letter to mark it <strong>incorrect</strong> (red).
+              Tap again to undo.</li>
+          <li>When the timer ends, tap the <strong>last letter the student
+              attempted</strong> (right or wrong) — this tells the scoring
+              where the student stopped.</li>
+          <li>Press <strong>Submit</strong> to record the results.</li>
+        </ol>
+        <p style="margin-top:12px; color:#6b7280; font-size:0.875rem;">
+          The form auto-stops and skips step 3 if the student makes
+          5 consecutive errors.
+        </p>
+      </tangy-box>
+    </tangy-form-item>
+
+    <tangy-form-item id="assessment" label="Letter Sounds — 60 seconds">
+      <tangy-timed
+        name="letter_sounds"
+        duration="60"
+        columns="10"
+        auto-stop="5"
+        auto-stop-mode="consecutive">
+        <option value="m">m</option>
+        <option value="a">a</option>
+        <option value="s">s</option>
+        <option value="t">t</option>
+        <option value="p">p</option>
+        <option value="n">n</option>
+        <option value="r">r</option>
+        <option value="d">d</option>
+        <option value="f">f</option>
+        <option value="g">g</option>
+        <option value="c">c</option>
+        <option value="h">h</option>
+        <option value="e">e</option>
+        <option value="i">i</option>
+        <option value="l">l</option>
+        <option value="o">o</option>
+        <option value="b">b</option>
+        <option value="u">u</option>
+        <option value="k">k</option>
+        <option value="w">w</option>
+        <option value="j">j</option>
+        <option value="v">v</option>
+        <option value="z">z</option>
+        <option value="y">y</option>
+        <option value="q">q</option>
+        <option value="x">x</option>
+        <option value="M">M</option>
+        <option value="A">A</option>
+        <option value="S">S</option>
+        <option value="T">T</option>
+        <option value="P">P</option>
+        <option value="N">N</option>
+        <option value="R">R</option>
+        <option value="D">D</option>
+        <option value="F">F</option>
+        <option value="G">G</option>
+        <option value="C">C</option>
+        <option value="H">H</option>
+        <option value="E">E</option>
+        <option value="I">I</option>
+        <option value="L">L</option>
+        <option value="O">O</option>
+        <option value="B">B</option>
+        <option value="U">U</option>
+        <option value="K">K</option>
+        <option value="W">W</option>
+      </tangy-timed>
+      <tangy-box>
+        <p style="margin-top:1rem; font-size:0.875rem; color:#6b7280;">
+          Student finished early? Stop the timer to mark the last letter attempted.
+        </p>
+        <button
+          onclick="document.querySelector('#letter-sound-form tangy-timed').stopGrid()"
+          style="margin-top:0.4rem; padding:0.5rem 1.25rem; background:#f97316;
+                 color:white; border:none; border-radius:6px; font-size:0.9rem;
+                 font-weight:600; cursor:pointer;">
+          Stop Timer Early
+        </button>
+      </tangy-box>
+    </tangy-form-item>
+
+  </tangy-form>
+
+  <div id="log">Waiting for form submission...</div>
+
+  <script type="module">
+    await customElements.whenDefined('tangy-form')
+    document.querySelector('#letter-sound-form').addEventListener('submit', function(event) {
+      const data = {
+        values:   event.target.values,
+        response: event.target.response,
+        inputs:   event.target.inputs,
+      }
+      console.log('[Letter Sound Recognition] Data collected:', data)
+      document.querySelector('#log').textContent = JSON.stringify(data.values, null, 2)
+    })
+  </script>
+
+</body>
+</html>

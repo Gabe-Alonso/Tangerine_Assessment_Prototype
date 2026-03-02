@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Word Fluency — Preview</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-loader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/redux@4.2.1/dist/redux.min.js"></script>
+  <script>window.Redux = Redux;</script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/tangy-form@4.50.6/dist/bundle.js"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
+    h2   { color: #ea580c; margin-bottom: 0.25rem; }
+    p.hint { color: #6b7280; font-size: 0.875rem; margin-bottom: 1.5rem; }
+    #log { margin-top: 2rem; background: #1e1e1e; color: #d4d4d4; padding: 1rem;
+           border-radius: 8px; font-family: monospace; font-size: 0.8rem;
+           white-space: pre-wrap; max-height: 300px; overflow-y: auto; }
+    :root {
+      --accent-color:      #d1d5db;
+      --primary-color:     #ef4444;
+      --accent-text-color: #1f2937;
+      --tangy-toggle-button-font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Word Fluency</h2>
+  <p class="hint">Form preview — this passage is fixed; the React app picks one of three randomly.</p>
+
+  <tangy-form id="word-fluency-form">
+
+    <tangy-form-item id="instructions" label="Instructions">
+      <tangy-box>
+        <p style="font-size:1.05rem; font-weight:600; margin-bottom:0.5rem;">
+          Passage: The Tortoise and the Hare
+        </p>
+        <p><strong>Say to the student:</strong></p>
+        <p style="font-style:italic; margin:8px 0 16px;">
+          "I would like you to read this story out loud. Start at the beginning
+          and read as quickly and carefully as you can. Ready? Begin."
+        </p>
+        <p><strong>Assessor workflow:</strong></p>
+        <ol style="margin:8px 0 0 20px; line-height:2;">
+          <li>Press <strong>Play</strong> to start the 60-second timer.</li>
+          <li>All words start as <strong>correct</strong> (gray).
+              Tap a word to mark it <strong>incorrect</strong> (red).
+              Tap again to undo.</li>
+          <li>When the timer ends, tap the <strong>last word the student
+              attempted</strong> — this tells the scoring where they stopped.</li>
+          <li>Press <strong>Submit</strong> to record the results.</li>
+        </ol>
+        <p style="margin-top:12px; color:#6b7280; font-size:0.875rem;">
+          The form auto-stops and skips step 3 if the student makes
+          5 consecutive errors.
+        </p>
+      </tangy-box>
+    </tangy-form-item>
+
+    <tangy-form-item id="assessment" label="The Tortoise and the Hare — 60 seconds">
+      <tangy-timed
+        name="passage_words"
+        duration="60"
+        columns="8"
+        auto-stop="5"
+        auto-stop-mode="consecutive">
+        <option value="A">A</option>
+        <option value="hare">hare</option>
+        <option value="was">was</option>
+        <option value="very">very</option>
+        <option value="proud">proud</option>
+        <option value="of">of</option>
+        <option value="how">how</option>
+        <option value="fast">fast</option>
+        <option value="he">he</option>
+        <option value="could">could</option>
+        <option value="run.">run.</option>
+        <option value="One">One</option>
+        <option value="day">day</option>
+        <option value="he">he</option>
+        <option value="saw">saw</option>
+        <option value="a">a</option>
+        <option value="tortoise">tortoise</option>
+        <option value="walking">walking</option>
+        <option value="very">very</option>
+        <option value="slowly">slowly</option>
+        <option value="along">along</option>
+        <option value="the">the</option>
+        <option value="road.">road.</option>
+        <option value="The">The</option>
+        <option value="hare">hare</option>
+        <option value="laughed">laughed</option>
+        <option value="and">and</option>
+        <option value="said">said</option>
+        <option value="the">the</option>
+        <option value="tortoise">tortoise</option>
+        <option value="was">was</option>
+        <option value="the">the</option>
+        <option value="slowest">slowest</option>
+        <option value="thing">thing</option>
+        <option value="he">he</option>
+        <option value="had">had</option>
+        <option value="ever">ever</option>
+        <option value="seen.">seen.</option>
+        <option value="The">The</option>
+        <option value="tortoise">tortoise</option>
+        <option value="was">was</option>
+        <option value="not">not</option>
+        <option value="upset.">upset.</option>
+        <option value="He">He</option>
+        <option value="asked">asked</option>
+        <option value="the">the</option>
+        <option value="hare">hare</option>
+        <option value="to">to</option>
+        <option value="have">have</option>
+        <option value="a">a</option>
+        <option value="race.">race.</option>
+        <option value="The">The</option>
+        <option value="hare">hare</option>
+        <option value="thought">thought</option>
+        <option value="this">this</option>
+        <option value="was">was</option>
+        <option value="very">very</option>
+        <option value="funny">funny</option>
+        <option value="but">but</option>
+        <option value="he">he</option>
+        <option value="agreed.">agreed.</option>
+        <option value="They">They</option>
+        <option value="started">started</option>
+        <option value="and">and</option>
+        <option value="the">the</option>
+        <option value="hare">hare</option>
+        <option value="sped">sped</option>
+        <option value="off">off</option>
+        <option value="down">down</option>
+        <option value="the">the</option>
+        <option value="road.">road.</option>
+        <option value="Soon">Soon</option>
+        <option value="he">he</option>
+        <option value="was">was</option>
+        <option value="so">so</option>
+        <option value="far">far</option>
+        <option value="ahead">ahead</option>
+        <option value="that">that</option>
+        <option value="he">he</option>
+        <option value="stopped">stopped</option>
+        <option value="to">to</option>
+        <option value="take">take</option>
+        <option value="a">a</option>
+        <option value="nap">nap</option>
+        <option value="under">under</option>
+        <option value="a">a</option>
+        <option value="shady">shady</option>
+        <option value="tree.">tree.</option>
+        <option value="While">While</option>
+        <option value="the">the</option>
+        <option value="hare">hare</option>
+        <option value="slept">slept</option>
+        <option value="the">the</option>
+        <option value="tortoise">tortoise</option>
+        <option value="kept">kept</option>
+        <option value="walking">walking</option>
+        <option value="and">and</option>
+        <option value="walking">walking</option>
+        <option value="without">without</option>
+        <option value="stopping.">stopping.</option>
+        <option value="When">When</option>
+        <option value="the">the</option>
+        <option value="hare">hare</option>
+        <option value="woke">woke</option>
+        <option value="up">up</option>
+        <option value="he">he</option>
+        <option value="saw">saw</option>
+        <option value="the">the</option>
+        <option value="tortoise">tortoise</option>
+        <option value="crossing">crossing</option>
+        <option value="the">the</option>
+        <option value="finish">finish</option>
+        <option value="line.">line.</option>
+        <option value="The">The</option>
+        <option value="tortoise">tortoise</option>
+        <option value="had">had</option>
+        <option value="won">won</option>
+        <option value="the">the</option>
+        <option value="race.">race.</option>
+      </tangy-timed>
+      <tangy-box>
+        <p style="margin-top:1rem; font-size:0.875rem; color:#6b7280;">
+          Student finished early? Stop the timer to mark the last word attempted.
+        </p>
+        <button
+          onclick="document.querySelector('#word-fluency-form tangy-timed').stopGrid()"
+          style="margin-top:0.4rem; padding:0.5rem 1.25rem; background:#f97316;
+                 color:white; border:none; border-radius:6px; font-size:0.9rem;
+                 font-weight:600; cursor:pointer;">
+          Stop Timer Early
+        </button>
+      </tangy-box>
+    </tangy-form-item>
+
+  </tangy-form>
+
+  <div id="log">Waiting for form submission...</div>
+
+  <script type="module">
+    await customElements.whenDefined('tangy-form')
+    document.querySelector('#word-fluency-form').addEventListener('submit', function(event) {
+      const items = event.target.values?.passage_words ?? []
+      let lastHighlightedIndex = -1
+      let lastPressedIndex = -1
+      for (let i = items.length - 1; i >= 0; i--) {
+        if (lastHighlightedIndex === -1 && items[i].highlighted) lastHighlightedIndex = i
+        if (lastPressedIndex === -1 && items[i].pressed)         lastPressedIndex = i
+        if (lastHighlightedIndex !== -1 && lastPressedIndex !== -1) break
+      }
+      const lastAttemptedIndex = lastHighlightedIndex >= 0 ? lastHighlightedIndex : lastPressedIndex
+      const attempted = lastAttemptedIndex >= 0 ? lastAttemptedIndex + 1 : 0
+      const incorrect = items.slice(0, attempted).filter(i => i.pressed).length
+      const result = {
+        attempted,
+        correct: attempted - incorrect,
+        incorrect,
+        total: items.length,
+      }
+      console.log('[Word Fluency] Data collected:', result)
+      document.querySelector('#log').textContent = JSON.stringify(result, null, 2)
+    })
+  </script>
+
+</body>
+</html>

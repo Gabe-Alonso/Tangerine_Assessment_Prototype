@@ -2,9 +2,9 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 1.5rem;
+  padding: 1rem 1.5rem;
 }
 
 .game-shell__header {
@@ -101,4 +101,57 @@
 
 .game-placeholder__demo-btn:hover {
   background-color: var(--orange-dark);
+}
+
+/* ── Results panel ───────────────────────────────────────────── */
+.game-result {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.game-result__heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: 1.25rem;
+}
+
+.game-result__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.game-result__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  min-width: 120px;
+  flex: 1;
+}
+
+.game-result__value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--gray-800);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.game-result__value--correct  { color: #16a34a; }
+.game-result__value--incorrect { color: #dc2626; }
+
+.game-result__label {
+  font-size: 0.75rem;
+  color: var(--gray-600);
+  text-align: center;
+  line-height: 1.3;
 }
