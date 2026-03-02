@@ -116,7 +116,7 @@ function buildFormHtml(passage) { return `
       columns="8"
       auto-stop="5"
       auto-stop-mode="consecutive">
-      ${passage.words.map(w => `<option value="${w}">${w}</option>`).join('\n      ')}
+      ${passage.words.map((w, i) => `<option value="${w}_${i}">${w}</option>`).join('\n      ')}
     </tangy-timed>
     <tangy-box>
       <p style="margin-top:1rem; font-size:0.875rem; color:#6b7280;">
